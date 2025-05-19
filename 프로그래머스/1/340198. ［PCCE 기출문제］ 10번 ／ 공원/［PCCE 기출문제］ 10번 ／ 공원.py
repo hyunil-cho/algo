@@ -1,6 +1,6 @@
 # N * (50 * 50 * 10)
 def solution(mats, park):
-    mats.sort()
+    mats.sort(reverse=True)
     x_len = len(park)
     y_len = len(park[0])
     
@@ -20,5 +20,5 @@ def solution(mats, park):
                             break;
                 
                 if is_okay:
-                    max_cnt = max(max_cnt, mat);
-    return max_cnt
+                    return mat
+    return -1;
