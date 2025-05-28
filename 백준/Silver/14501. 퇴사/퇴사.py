@@ -7,15 +7,13 @@ for _ in range(N):
     T.append(t)
     P.append(p)
 
-dp = [0] * (N + 2)  # N+1일에 퇴사, 인덱스는 N+1까지 필요
+dp = [0] * (N+2)
 
-for i in range(1, N + 1):
-    # 1-based로 index 조정
-    # 상담을 하지 않는 경우
-    dp[i + 1] = max(dp[i + 1], dp[i])
-
-    # 상담을 하는 경우
-    if i + T[i - 1] <= N + 1:
-        dp[i + T[i - 1]] = max(dp[i + T[i - 1]], dp[i] + P[i - 1])
-
+for n in range(1, N+1):
+    dp[n+1] = max(dp[n+1], dp[n])
+    
+    end_date = T[n-1] + n
+    
+    if end_date <= N+1:
+        dp[end_date] = max(dp[end_date], dp[n]+P[n-1])
 print(max(dp))
