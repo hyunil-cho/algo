@@ -8,15 +8,13 @@ def count_arrangements(n, vip_list):
 
     result = 1
     prev_vip = 0  # 맨 앞부터 시작
-
-    # 각 VIP 좌석 사이의 구간 처리
+    
     for vip in vip_list:
-        segment_length = vip - prev_vip - 1
-        result *= dp[segment_length]
+        segment_len = vip - prev_vip-1
+        result *= dp[segment_len]
         prev_vip = vip
-
-    # 마지막 VIP 이후 구간도 처리
-    result *= dp[n - prev_vip]
+   
+    result *= dp[n- prev_vip]
 
     return result
 
